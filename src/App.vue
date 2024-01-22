@@ -1,11 +1,16 @@
 <script setup>
 import {ref} from 'vue'
 import SearchInput from './components/SearchInput.vue';
+import WeatherCard from './components/WeatherCard.vue';
 
 const places = ref([])
 
 const addPlace = (data) => {
   places.value.push(data)
+}
+
+const deletePlace = (name) => {
+  places.value = places.value.filter(p => p.location.name !== name)
 }
 
 </script>
@@ -29,8 +34,8 @@ const addPlace = (data) => {
     </div>
 
     <!-- Weather Card -->
-    <div>
-      <p></p>
+    <div v-for="(place, idx) in places" :key="idx">
+      <WeatherCard :place="place" @delete-place="deletePlace"/>
     </div>
   </main>
 </template>
