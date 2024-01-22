@@ -34,8 +34,10 @@ const deletePlace = (name) => {
     </div>
 
     <!-- Weather Card -->
-    <div v-for="(place, idx) in places" :key="idx">
-      <WeatherCard :place="place" @delete-place="deletePlace"/>
+    <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+      <div v-for="(place, idx) in places" :key="idx">
+        <WeatherCard :place="place" @delete-place="deletePlace"/>
+      </div>
     </div>
   </main>
 </template>
